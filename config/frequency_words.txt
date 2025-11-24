@@ -20,9 +20,6 @@ DJI
 稚晖君
 彭志辉
 
-京东
-刘强东
-
 字节
 bytedance
 张一鸣
@@ -59,28 +56,39 @@ ios
 ai
 !gai
 人工智能
+大模型
+智能体
+LLM
+
+Vibe-Coding
+VScode
+Cline
+
+ai-coding
+Claude
+Cursor
+Antigravity
+Kiro
+
+国产coding
+Trae
+Qoder
+CodeBuddy
 
 自动驾驶
+特斯拉
+华为
+小鹏
+小米
 
+智能硬件
+小智
+多模态
 机器人
+tuya
 
 国产
 中国
-
-美国
-日本
-韩国
-
-芯片
-光刻机
+@5
 
 科技
-
-核能
-
-月球
-登月
-火星
-宇宙
-飞船
-航空
