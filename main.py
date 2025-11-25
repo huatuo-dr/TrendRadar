@@ -7,10 +7,13 @@ import re
 import time
 import webbrowser
 import smtplib
+import argparse
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from email.utils import formataddr, formatdate, make_msgid
+from extern_platform.csdn import fetch_csdn_data
+from extern_platform.oshwhub import fetch_oshwhub_data
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Union
@@ -477,6 +480,12 @@ class DataFetcher:
         else:
             id_value = id_info
             alias = id_value
+
+        if id_value == "csdn":
+            return fetch_csdn_data(id_value, alias)
+            
+        if id_value == "oshwhub":
+            return fetch_oshwhub_data(id_value, alias)
 
         url = f"https://newsnow.busiyi.world/api/s?id={id_value}&latest"
 
@@ -4795,7 +4804,43 @@ class NewsAnalyzer:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="TrendRadar - 热点新闻聚合分析工具")
+    parser.add_argument(
+        "--platforms",
+        type=str,
+        help="指定要抓取的平台ID，用逗号分隔 (例如: csdn,oshwhub)",
+    )
+    args = parser.parse_args()
+
     try:
+        # 如果指定了平台，过滤配置
+        if args.platforms:
+            selected_platforms = [p.strip() for p in args.platforms.split(",")]
+            # 重新加载配置以确保是最新的
+            load_config()
+            
+            # 过滤 CONFIG["PLATFORMS"]
+            all_platforms = CONFIG["PLATFORMS"]
+            filtered_platforms = []
+            valid_ids = [p["id"] for p in all_platforms]
+            
+            for pid in selected_platforms:
+                found = False
+                for p in all_platforms:
+                    if p["id"] == pid:
+                        filtered_platforms.append(p)
+                        found = True
+                        break
+                if not found:
+                    print(f"⚠️ 警告: 平台 ID '{pid}' 未在配置文件中找到，已忽略。可用平台: {valid_ids}")
+            
+            if not filtered_platforms:
+                print("❌ 错误: 未找到任何有效的平台 ID，程序退出")
+                return
+                
+            CONFIG["PLATFORMS"] = filtered_platforms
+            print(f"🎯 已指定只抓取以下平台: {[p['name'] for p in filtered_platforms]}")
+
         analyzer = NewsAnalyzer()
         analyzer.run()
     except FileNotFoundError as e:

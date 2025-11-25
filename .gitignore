@@ -1,3 +1,37 @@
+# ==============================================
+# Python 开发专属忽略规则
+# ==============================================
+# 字节码与编译产物
+__pycache__/             # Python 编译缓存目录
+*.py[cod]                # Python 字节码文件
+*$py.class
+
+# 依赖与虚拟环境
+venv/                    # 虚拟环境目录（venv）
+env/                     # 虚拟环境目录（virtualenv）
+ENV/
+.env                     # 环境变量文件（若包含敏感信息）
+.venv/
+.pdm/                    # PDM 包管理缓存
+.pipenv/                 # Pipenv 缓存
+ poetry.lock             # Poetry 依赖锁定文件（按需保留，此处默认忽略）
+Pipfile.lock             # Pipenv 依赖锁定文件（按需保留）
+*.egg-info/              # 鸡蛋信息目录
+dist/                    # 打包输出目录
+build/                   # 编译输出目录
+*.whl                    # Python Wheel 包
+*.tar.gz                 # 源码包
+*.egg
+.mypy_cache/             # MyPy 类型检查缓存
+.ruff_cache/             # Ruff 代码检查缓存
+.pytest_cache/           # Pytest 测试缓存
+.tox/                    # Tox 测试环境
+.coverage                # 测试覆盖率文件
+htmlcov/                 # 覆盖率报告目录
+.ipynb_checkpoints/      # Jupyter Notebook 检查点
+.mamba/                  # Mamba 包管理缓存
+
+
 .agent
 output
 index.html
