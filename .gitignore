@@ -37,7 +37,7 @@ htmlcov/                 # 覆盖率报告目录
 # Output 目录规则：
 # - incremental 模式需要提交 txt 文件用于增量去重
 # - html 子目录包含体积较大的报告文件，可忽略（本地可生成）
-output/**/html/     # 忽略所有名为 html 的子目录
+output/**/html/
 # output/           # 如果不使用 incremental，取消注释这行完全忽略 output
 
 index.html          # 忽略根目录的 index.html
