@@ -3,6 +3,7 @@
 # Ensure we are executing from the project root directory
 # This allows the script to be run from anywhere (e.g., ./scripts/update_repo.sh or cd scripts; ./update_repo.sh)
 cd "$(dirname "$0")/.." || exit 1
+echo "当前目录：$(pwd)"
 
 # 1. 同步远程仓库内容
 echo "正在同步远程仓库..."

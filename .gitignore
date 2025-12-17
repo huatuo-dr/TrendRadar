@@ -42,3 +42,6 @@ output/**/html/
 
 # index.html          # 忽略根目录的 index.html
 uv.lock
+
+scripts/auto_update.pid
+scripts/auto_update.log
