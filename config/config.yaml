@@ -132,8 +132,6 @@ platforms:
     name: "知乎"
   - id: "douban"
     name: "豆瓣"
-  - id: "github"
-    name: "Github"
   - id: "solidot"
     name: "Solidot"
   - id: "sspai"
