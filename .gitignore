@@ -45,3 +45,4 @@ uv.lock
 
 scripts/auto_update.pid
 scripts/auto_update.log
+.env
